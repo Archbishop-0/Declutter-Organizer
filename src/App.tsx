@@ -211,8 +211,8 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className={`${theme === 'dark' ? 'dark' : 'light'} h-screen w-screen flex flex-col bg-neutral-950 select-none overflow-hidden text-neutral-100 font-sans`}>
-      {/* macOS Frameless Custom Title Bar */}
+    <div className={`${theme === 'dark' ? 'dark' : 'light'} h-screen w-screen flex flex-col bg-[#09090b] select-none overflow-hidden text-neutral-100 font-sans`}>
+      {/* Windows Frameless Matte Title Bar */}
       <TitleBar
         theme={theme}
         onToggleTheme={toggleTheme}
@@ -222,9 +222,9 @@ export const App: React.FC = () => {
         undoCount={undoHistory.length}
       />
 
-      {/* Main Body Area: macOS Finder-style Window */}
+      {/* Main Body Area: Matte Workspace */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Left Translucent Sidebar */}
+        {/* Left Matte Sidebar */}
         <Sidebar
           currentPath={currentPath}
           systemFolders={systemFolders}
@@ -236,8 +236,8 @@ export const App: React.FC = () => {
         />
 
         {/* Right Main Content Pane */}
-        <main className="flex-1 flex flex-col p-6 overflow-y-auto bg-neutral-900/40 relative">
-          <div className="max-w-5xl w-full mx-auto space-y-6">
+        <main className="flex-1 flex flex-col p-6 overflow-y-auto bg-[#09090b] relative">
+          <div className="max-w-5xl w-full mx-auto space-y-5">
             {/* Target Folder Header Banner */}
             <FolderPicker
               currentPath={currentPath}
@@ -262,7 +262,7 @@ export const App: React.FC = () => {
 
           {/* Toast Notification */}
           {toast && (
-            <div className="fixed bottom-6 right-6 z-50 flex items-center space-x-2.5 px-4 py-2.5 rounded-xl bg-neutral-800/90 border border-white/10 shadow-2xl backdrop-blur-md text-xs animate-slideUp">
+            <div className="fixed bottom-6 right-6 z-50 flex items-center space-x-2.5 px-4 py-2.5 rounded-lg bg-[#14141a] border border-white/10 shadow-2xl text-xs animate-slideUp">
               {toast.type === 'success' && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
               {toast.type === 'error' && <AlertCircle className="w-4 h-4 text-red-400" />}
               {toast.type === 'info' && <Info className="w-4 h-4 text-blue-400" />}

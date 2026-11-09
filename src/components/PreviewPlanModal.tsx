@@ -1,18 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import {
   X,
-  Check,
   ChevronDown,
   ChevronRight,
   Folder,
   File,
   Search,
-  ArrowRight,
-  CheckSquare,
-  Square,
-  AlertTriangle,
   Play,
-  RotateCcw,
 } from 'lucide-react';
 import { OrganizationPlan, PlanAction } from '../types';
 import { formatBytes } from '../services/organizerEngine';
@@ -36,7 +30,6 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [collapsedFolders, setCollapsedFolders] = useState<Record<string, boolean>>({});
 
-  // Reset or sync when plan changes
   React.useEffect(() => {
     setActions(plan.actions);
   }, [plan]);
@@ -61,7 +54,6 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
     setCollapsedFolders(prev => ({ ...prev, [folder]: !prev[folder] }));
   };
 
-  // Filter actions by search query
   const filteredActions = useMemo(() => {
     if (!searchQuery.trim()) return actions;
     const q = searchQuery.toLowerCase();
@@ -73,7 +65,6 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
     );
   }, [actions, searchQuery]);
 
-  // Group filtered actions by destination folder
   const groupedActions = useMemo(() => {
     const groups: Record<string, PlanAction[]> = {};
     for (const action of filteredActions) {
@@ -98,54 +89,54 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="w-full max-w-4xl max-h-[85vh] flex flex-col rounded-2xl bg-neutral-900 border border-white/10 shadow-2xl overflow-hidden text-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn select-none">
+      <div className="w-full max-w-4xl max-h-[85vh] flex flex-col rounded-xl bg-[#0e0e12] border border-white/10 shadow-2xl overflow-hidden text-neutral-200">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-neutral-950/50">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.06] bg-[#0a0a0d]">
           <div>
             <div className="flex items-center space-x-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
-              <h2 className="text-base font-semibold text-neutral-100">
+              <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+              <h2 className="text-sm font-semibold text-neutral-100 font-sans">
                 Review Organization Plan
               </h2>
             </div>
-            <p className="text-xs text-neutral-400 mt-0.5">
-              Verify where each file will be moved. Uncheck any file you wish to leave in place.
+            <p className="text-[11px] text-neutral-400 mt-0.5">
+              Confirm destination paths. Uncheck files to keep them in place.
             </p>
           </div>
 
           <button
             onClick={onClose}
             disabled={isExecuting}
-            className="p-1.5 rounded-lg hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
+            className="p-1.5 rounded hover:bg-white/[0.08] text-neutral-400 hover:text-white transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Toolbar: Search & Select All */}
-        <div className="flex items-center justify-between px-6 py-3 border-b border-white/5 bg-neutral-900/80 gap-4">
+        <div className="flex items-center justify-between px-5 py-2.5 border-b border-white/[0.06] bg-[#111115] gap-4">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-neutral-400" />
+            <Search className="absolute left-3 top-2.5 w-3.5 h-3.5 text-neutral-500" />
             <input
               type="text"
-              placeholder="Filter by filename or destination..."
+              placeholder="Search by file name or target folder..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors"
+              className="w-full pl-9 pr-3 py-1.5 rounded-md bg-[#16161c] border border-white/[0.08] text-xs text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors"
             />
           </div>
 
           <div className="flex items-center space-x-2 text-xs">
             <button
               onClick={() => toggleSelectAll(true)}
-              className="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors"
+              className="px-2.5 py-1 rounded bg-[#181820] hover:bg-[#20202a] text-neutral-300 hover:text-white border border-white/[0.06] transition-colors"
             >
               Select All
             </button>
             <button
               onClick={() => toggleSelectAll(false)}
-              className="px-2.5 py-1 rounded bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white border border-white/5 transition-colors"
+              className="px-2.5 py-1 rounded bg-[#181820] hover:bg-[#20202a] text-neutral-300 hover:text-white border border-white/[0.06] transition-colors"
             >
               Deselect All
             </button>
@@ -153,10 +144,10 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
         </div>
 
         {/* Folder Groups & File List */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-5 space-y-3 bg-[#0a0a0d]">
           {Object.keys(groupedActions).length === 0 ? (
             <div className="py-12 text-center text-xs text-neutral-500">
-              No files matched your filter query.
+              No files matched your search filter.
             </div>
           ) : (
             Object.entries(groupedActions).map(([folder, items]) => {
@@ -167,25 +158,25 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
               return (
                 <div
                   key={folder}
-                  className="rounded-xl border border-white/5 bg-neutral-950/40 overflow-hidden"
+                  className="rounded-lg border border-white/[0.06] bg-[#121216] overflow-hidden"
                 >
                   {/* Folder group header */}
-                  <div className="flex items-center justify-between px-4 py-2.5 bg-white/[0.02] border-b border-white/5">
+                  <div className="flex items-center justify-between px-3.5 py-2 bg-[#16161c] border-b border-white/[0.05]">
                     <div
-                      className="flex items-center space-x-2.5 cursor-pointer select-none"
+                      className="flex items-center space-x-2 cursor-pointer select-none"
                       onClick={() => toggleFolderCollapse(folder)}
                     >
                       {isCollapsed ? (
-                        <ChevronRight className="w-4 h-4 text-neutral-500" />
+                        <ChevronRight className="w-3.5 h-3.5 text-neutral-500" />
                       ) : (
-                        <ChevronDown className="w-4 h-4 text-neutral-500" />
+                        <ChevronDown className="w-3.5 h-3.5 text-neutral-500" />
                       )}
-                      <Folder className="w-4 h-4 text-blue-400" />
+                      <Folder className="w-3.5 h-3.5 text-blue-400" />
                       <span className="text-xs font-semibold text-neutral-200 font-mono">
                         {folder}
                       </span>
-                      <span className="text-[10px] text-neutral-500 px-1.5 py-0.5 rounded-full bg-white/5">
-                        {folderSelectedCount} / {items.length} selected
+                      <span className="text-[10px] text-neutral-400 px-1.5 py-0.5 rounded bg-white/[0.06] font-sans">
+                        {folderSelectedCount} / {items.length}
                       </span>
                     </div>
 
@@ -199,25 +190,25 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
 
                   {/* Files inside folder */}
                   {!isCollapsed && (
-                    <div className="divide-y divide-white/5">
+                    <div className="divide-y divide-white/[0.04]">
                       {items.map(action => (
                         <div
                           key={action.id}
                           onClick={() => toggleAction(action.id)}
-                          className={`flex items-center justify-between px-4 py-2 text-xs transition-colors cursor-pointer ${
+                          className={`flex items-center justify-between px-3.5 py-2 text-xs transition-colors cursor-pointer ${
                             action.selected
-                              ? 'bg-blue-500/5 hover:bg-blue-500/10'
-                              : 'opacity-40 hover:opacity-70 bg-transparent'
+                              ? 'bg-blue-600/[0.04] hover:bg-blue-600/[0.08]'
+                              : 'opacity-40 hover:opacity-60 bg-transparent'
                           }`}
                         >
-                          <div className="flex items-center space-x-3 overflow-hidden pr-4">
+                          <div className="flex items-center space-x-2.5 overflow-hidden pr-4">
                             <input
                               type="checkbox"
                               checked={action.selected}
-                              onChange={() => {}} // handled by parent onClick
-                              className="w-3.5 h-3.5 rounded text-blue-500 bg-neutral-800 border-neutral-700"
+                              onChange={() => {}}
+                              className="w-3.5 h-3.5 rounded text-blue-500 bg-neutral-900 border-neutral-700"
                             />
-                            <File className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0" />
+                            <File className="w-3.5 h-3.5 text-neutral-500 flex-shrink-0" />
                             <div className="overflow-hidden">
                               <span className="font-medium text-neutral-200 truncate block">
                                 {action.fileName}
@@ -253,33 +244,33 @@ export const PreviewPlanModal: React.FC<PreviewPlanModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-white/5 bg-neutral-950/80">
+        <div className="flex items-center justify-between px-5 py-3 border-t border-white/[0.06] bg-[#0a0a0d]">
           <div className="flex items-center space-x-2 text-xs text-neutral-400">
             <span className="font-semibold text-neutral-200">{selectedCount}</span>
             <span>of {actions.length} files selected for move</span>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2.5">
             <button
               onClick={onClose}
               disabled={isExecuting}
-              className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 hover:text-white text-xs font-medium border border-white/5 transition-colors"
+              className="px-3.5 py-1.5 rounded-md bg-[#16161c] hover:bg-[#202028] text-neutral-300 hover:text-white text-xs font-medium border border-white/[0.06] transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={handleRun}
               disabled={isExecuting || selectedCount === 0}
-              className="flex items-center space-x-2 px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-lg shadow-blue-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+              className="flex items-center space-x-1.5 px-4 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow transition-all active:scale-[0.98] disabled:opacity-40"
             >
               {isExecuting ? (
                 <>
-                  <div className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                  <span>Decluttering...</span>
+                  <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  <span>Organizing...</span>
                 </>
               ) : (
                 <>
-                  <Play className="w-3.5 h-3.5 fill-current" />
+                  <Play className="w-3 h-3 fill-current" />
                   <span>Execute Move ({selectedCount})</span>
                 </>
               )}

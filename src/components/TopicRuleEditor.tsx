@@ -8,8 +8,6 @@ import {
   Tag,
   FileCode,
   RotateCcw,
-  Check,
-  Edit2,
 } from 'lucide-react';
 import { TopicRule } from '../types';
 import { DEFAULT_RULES } from '../services/defaultRules';
@@ -41,7 +39,6 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
   const [editingRules, setEditingRules] = useState<TopicRule[]>(rules);
   const [isAddingNew, setIsAddingNew] = useState(false);
 
-  // New rule state
   const [newName, setNewName] = useState('');
   const [newFolder, setNewFolder] = useState('');
   const [newKeywords, setNewKeywords] = useState('');
@@ -67,7 +64,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
   };
 
   const handleResetDefaults = () => {
-    if (window.confirm('Reset all topic rules back to original macOS defaults?')) {
+    if (window.confirm('Reset all topic rules back to original defaults?')) {
       setEditingRules(DEFAULT_RULES);
       onSaveRules(DEFAULT_RULES);
     }
@@ -95,14 +92,13 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
       extensions,
       enabled: true,
       color: newColor,
-      priority: 15, // Higher priority for custom user rules
+      priority: 15,
     };
 
     const updated = [newRule, ...editingRules];
     setEditingRules(updated);
     onSaveRules(updated);
 
-    // Reset form
     setNewName('');
     setNewFolder('');
     setNewKeywords('');
@@ -111,19 +107,19 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="w-full max-w-3xl max-h-[85vh] flex flex-col rounded-2xl bg-neutral-900 border border-white/10 shadow-2xl overflow-hidden text-neutral-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn select-none">
+      <div className="w-full max-w-3xl max-h-[85vh] flex flex-col rounded-xl bg-[#0e0e12] border border-white/10 shadow-2xl overflow-hidden text-neutral-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-neutral-950/50">
+        <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/[0.06] bg-[#0a0a0d]">
           <div className="flex items-center space-x-2.5">
-            <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+            <div className="p-1.5 rounded bg-blue-500/10 text-blue-400">
               <SlidersHorizontal className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base font-semibold text-neutral-100">
+              <h2 className="text-sm font-semibold text-neutral-100 font-sans">
                 Topic & Project Classification Rules
               </h2>
-              <p className="text-xs text-neutral-400 mt-0.5">
+              <p className="text-[11px] text-neutral-400 mt-0.5">
                 Customize folder matching patterns, keywords, and target folders.
               </p>
             </div>
@@ -132,14 +128,14 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
           <div className="flex items-center space-x-2">
             <button
               onClick={() => setIsAddingNew(!isAddingNew)}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-all"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-all"
             >
               <Plus className="w-3.5 h-3.5" />
-              <span>Add Custom Topic</span>
+              <span>Add Topic</span>
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
+              className="p-1.5 rounded hover:bg-white/[0.08] text-neutral-400 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -150,10 +146,10 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
         {isAddingNew && (
           <form
             onSubmit={handleCreateRule}
-            className="p-5 border-b border-white/10 bg-neutral-950/80 space-y-4 animate-slideDown"
+            className="p-4 border-b border-white/[0.08] bg-[#121216] space-y-3.5 animate-slideDown"
           >
-            <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider">
-              Create New Topic Rule
+            <div className="text-[10px] font-semibold text-blue-400 uppercase tracking-widest">
+              Create Custom Rule
             </div>
 
             <div className="grid grid-cols-2 gap-3">
@@ -165,7 +161,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                   required
                   value={newName}
                   onChange={e => setNewName(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
+                  className="w-full px-3 py-1.5 rounded-md bg-[#181820] border border-white/[0.08] text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -177,7 +173,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                   required
                   value={newFolder}
                   onChange={e => setNewFolder(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
+                  className="w-full px-3 py-1.5 rounded-md bg-[#181820] border border-white/[0.08] text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
                 />
               </div>
             </div>
@@ -189,10 +185,10 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. arxiv, gpt, llm, prompt, transformer"
+                  placeholder="e.g. arxiv, gpt, llm, prompt"
                   value={newKeywords}
                   onChange={e => setNewKeywords(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
+                  className="w-full px-3 py-1.5 rounded-md bg-[#181820] border border-white/[0.08] text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -205,7 +201,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                   placeholder="e.g. .pdf, .docx, .md"
                   value={newExtensions}
                   onChange={e => setNewExtensions(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
+                  className="w-full px-3 py-1.5 rounded-md bg-[#181820] border border-white/[0.08] text-xs text-neutral-200 focus:outline-none focus:border-blue-500"
                 />
               </div>
             </div>
@@ -220,7 +216,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                       key={c}
                       type="button"
                       onClick={() => setNewColor(c)}
-                      className={`w-5 h-5 rounded-full transition-transform ${
+                      className={`w-4 h-4 rounded-full transition-transform ${
                         newColor === c ? 'scale-125 ring-2 ring-white' : 'hover:scale-110'
                       }`}
                       style={{ backgroundColor: c }}
@@ -233,13 +229,13 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsAddingNew(false)}
-                  className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 text-xs"
+                  className="px-3 py-1.5 rounded-md bg-[#181820] hover:bg-[#202028] text-neutral-300 text-xs border border-white/[0.06]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold"
+                  className="px-4 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold"
                 >
                   Save Rule
                 </button>
@@ -249,14 +245,14 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
         )}
 
         {/* Rules List */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-3">
+        <div className="flex-1 overflow-y-auto p-5 space-y-2.5 bg-[#0a0a0d]">
           {editingRules.map(rule => (
             <div
               key={rule.id}
-              className={`flex items-start justify-between p-4 rounded-xl border transition-all ${
+              className={`flex items-start justify-between p-3.5 rounded-lg border transition-all ${
                 rule.enabled
-                  ? 'bg-white/[0.02] border-white/10'
-                  : 'bg-white/[0.01] border-white/5 opacity-50'
+                  ? 'bg-[#121216] border-white/[0.06]'
+                  : 'bg-[#0f0f13] border-white/[0.03] opacity-50'
               }`}
             >
               <div className="flex items-start space-x-3">
@@ -264,18 +260,18 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                   type="checkbox"
                   checked={rule.enabled}
                   onChange={() => handleToggleRule(rule.id)}
-                  className="mt-1 w-4 h-4 rounded text-blue-500 bg-neutral-800 border-neutral-700"
+                  className="mt-0.5 w-3.5 h-3.5 rounded text-blue-500 bg-neutral-900 border-neutral-700"
                 />
 
-                <div className="space-y-1.5">
+                <div className="space-y-1">
                   <div className="flex items-center space-x-2">
                     <span
-                      className="w-2.5 h-2.5 rounded-full"
+                      className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: rule.color }}
                     />
-                    <span className="text-sm font-semibold text-neutral-200">{rule.name}</span>
-                    <span className="text-xs text-neutral-500">→</span>
-                    <span className="text-xs font-mono text-neutral-400 bg-white/5 px-2 py-0.5 rounded">
+                    <span className="text-xs font-semibold text-neutral-200">{rule.name}</span>
+                    <span className="text-xs text-neutral-600">→</span>
+                    <span className="text-xs font-mono text-neutral-400 bg-white/[0.05] px-1.5 py-0.5 rounded">
                       {rule.folderName}
                     </span>
                   </div>
@@ -286,7 +282,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                       {rule.keywords.map(kw => (
                         <span
                           key={kw}
-                          className="px-1.5 py-0.5 rounded bg-white/5 text-[10px] text-neutral-300 font-mono"
+                          className="px-1.5 py-0.5 rounded bg-[#181820] text-[10px] text-neutral-300 font-mono"
                         >
                           {kw}
                         </span>
@@ -314,7 +310,7 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
                 <button
                   onClick={() => handleDeleteRule(rule.id)}
                   title="Delete rule"
-                  className="p-1.5 rounded-lg hover:bg-red-500/10 text-neutral-500 hover:text-red-400 transition-colors"
+                  className="p-1.5 rounded hover:bg-red-500/10 text-neutral-500 hover:text-red-400 transition-colors"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </button>
@@ -324,18 +320,18 @@ export const TopicRuleEditor: React.FC<TopicRuleEditorProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-6 py-4 border-t border-white/5 bg-neutral-950/80">
+        <div className="flex items-center justify-between px-5 py-3 border-t border-white/[0.06] bg-[#0a0a0d]">
           <button
             onClick={handleResetDefaults}
             className="flex items-center space-x-1.5 text-xs text-neutral-400 hover:text-neutral-200 transition-colors"
           >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span>Restore Default Rules</span>
+            <RotateCcw className="w-3 h-3" />
+            <span>Reset Defaults</span>
           </button>
 
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md transition-all"
+            className="px-4 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow transition-all"
           >
             Done
           </button>

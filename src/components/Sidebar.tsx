@@ -8,8 +8,9 @@ import {
   Layers,
   Calendar,
   Sparkles,
-  CheckCircle2,
+  Check,
   Trash2,
+  FolderCheck,
 } from 'lucide-react';
 import { AppPreferences } from '../types';
 
@@ -38,160 +39,160 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const isCustom = currentPath && !isDesktop && !isDownloads && !isDocuments;
 
   return (
-    <aside className="w-64 flex-shrink-0 flex flex-col justify-between h-full border-r border-white/5 dark:border-white/5 bg-neutral-900/60 dark:bg-neutral-900/50 backdrop-blur-xl p-3 text-neutral-300">
+    <aside className="w-64 flex-shrink-0 flex flex-col justify-between h-full border-r border-white/[0.06] bg-[#0c0c0f] p-3 text-neutral-300 select-none">
       <div className="space-y-6">
         {/* Quick Folders Section */}
         <div>
-          <div className="px-2.5 pb-2 text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">
+          <div className="px-2.5 pb-2 text-[10px] font-semibold text-neutral-500 uppercase tracking-widest">
             Quick Locations
           </div>
           <div className="space-y-1">
             <button
               disabled={isOrganizing}
               onClick={() => systemFolders?.desktop && onSelectPath(systemFolders.desktop)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isDesktop
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-neutral-300 hover:bg-white/5 hover:text-white'
+                  ? 'bg-[#1e1e24] text-white border border-white/10 shadow-sm'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2.5">
-                <Monitor className={`w-4 h-4 ${isDesktop ? 'text-white' : 'text-blue-400'}`} />
+                <Monitor className={`w-3.5 h-3.5 ${isDesktop ? 'text-blue-400' : 'text-neutral-400'}`} />
                 <span>Desktop</span>
               </div>
-              {isDesktop && <CheckCircle2 className="w-3.5 h-3.5 text-blue-200" />}
+              {isDesktop && <Check className="w-3.5 h-3.5 text-blue-400" />}
             </button>
 
             <button
               disabled={isOrganizing}
               onClick={() => systemFolders?.downloads && onSelectPath(systemFolders.downloads)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isDownloads
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-neutral-300 hover:bg-white/5 hover:text-white'
+                  ? 'bg-[#1e1e24] text-white border border-white/10 shadow-sm'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2.5">
-                <Download className={`w-4 h-4 ${isDownloads ? 'text-white' : 'text-emerald-400'}`} />
+                <Download className={`w-3.5 h-3.5 ${isDownloads ? 'text-emerald-400' : 'text-neutral-400'}`} />
                 <span>Downloads</span>
               </div>
-              {isDownloads && <CheckCircle2 className="w-3.5 h-3.5 text-blue-200" />}
+              {isDownloads && <Check className="w-3.5 h-3.5 text-emerald-400" />}
             </button>
 
             <button
               disabled={isOrganizing}
               onClick={() => systemFolders?.documents && onSelectPath(systemFolders.documents)}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isDocuments
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-neutral-300 hover:bg-white/5 hover:text-white'
+                  ? 'bg-[#1e1e24] text-white border border-white/10 shadow-sm'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2.5">
-                <FileText className={`w-4 h-4 ${isDocuments ? 'text-white' : 'text-amber-400'}`} />
+                <FileText className={`w-3.5 h-3.5 ${isDocuments ? 'text-amber-400' : 'text-neutral-400'}`} />
                 <span>Documents</span>
               </div>
-              {isDocuments && <CheckCircle2 className="w-3.5 h-3.5 text-blue-200" />}
+              {isDocuments && <Check className="w-3.5 h-3.5 text-amber-400" />}
             </button>
 
             <button
               disabled={isOrganizing}
               onClick={onBrowseFolder}
-              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-xs font-medium transition-all ${
                 isCustom
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-neutral-300 hover:bg-white/5 hover:text-white'
+                  ? 'bg-[#1e1e24] text-white border border-white/10 shadow-sm'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2.5">
-                <FolderPlus className={`w-4 h-4 ${isCustom ? 'text-white' : 'text-purple-400'}`} />
-                <span className="truncate">{isCustom ? 'Custom Folder' : 'Choose Other...'}</span>
+                <FolderPlus className={`w-3.5 h-3.5 ${isCustom ? 'text-purple-400' : 'text-neutral-400'}`} />
+                <span className="truncate">{isCustom ? 'Custom Folder' : 'Select Folder...'}</span>
               </div>
-              {isCustom && <CheckCircle2 className="w-3.5 h-3.5 text-blue-200" />}
+              {isCustom && <Check className="w-3.5 h-3.5 text-purple-400" />}
             </button>
           </div>
         </div>
 
         {/* Organization Mode Selection */}
         <div>
-          <div className="px-2.5 pb-2 text-[11px] font-semibold text-neutral-500 uppercase tracking-wider">
-            Organizing Mode
+          <div className="px-2.5 pb-2 text-[10px] font-semibold text-neutral-500 uppercase tracking-widest">
+            Filtering Strategy
           </div>
           <div className="space-y-1">
             <button
               onClick={() => onUpdatePreferences({ organizeMode: 'topics_first' })}
-              className={`w-full text-left px-2.5 py-2 rounded-lg text-xs transition-all ${
+              className={`w-full text-left px-2.5 py-2 rounded-md text-xs transition-all ${
                 preferences.organizeMode === 'topics_first'
-                  ? 'bg-white/10 text-white border border-white/10'
-                  : 'text-neutral-400 hover:bg-white/5 hover:text-neutral-200'
+                  ? 'bg-[#1e1e24] text-white border border-white/10'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2 font-medium">
                 <FolderKanban className="w-3.5 h-3.5 text-blue-400" />
-                <span>Smart Topics & Projects</span>
+                <span>Topics & Projects</span>
               </div>
-              <p className="text-[10px] text-neutral-400 pl-5.5 mt-0.5 leading-snug">
-                Detects topics (tax, thesis, client) & project stems.
+              <p className="text-[10px] text-neutral-500 pl-5 mt-0.5 leading-snug">
+                Detects invoices, thesis, clients & keywords.
               </p>
             </button>
 
             <button
               onClick={() => onUpdatePreferences({ organizeMode: 'project_smart' })}
-              className={`w-full text-left px-2.5 py-2 rounded-lg text-xs transition-all ${
+              className={`w-full text-left px-2.5 py-2 rounded-md text-xs transition-all ${
                 preferences.organizeMode === 'project_smart'
-                  ? 'bg-white/10 text-white border border-white/10'
-                  : 'text-neutral-400 hover:bg-white/5 hover:text-neutral-200'
+                  ? 'bg-[#1e1e24] text-white border border-white/10'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2 font-medium">
                 <Sparkles className="w-3.5 h-3.5 text-purple-400" />
                 <span>Project Auto-Clustering</span>
               </div>
-              <p className="text-[10px] text-neutral-400 pl-5.5 mt-0.5 leading-snug">
-                Groups files sharing prefix names into dedicated folders.
+              <p className="text-[10px] text-neutral-500 pl-5 mt-0.5 leading-snug">
+                Groups filenames sharing stem prefixes.
               </p>
             </button>
 
             <button
               onClick={() => onUpdatePreferences({ organizeMode: 'category_only' })}
-              className={`w-full text-left px-2.5 py-2 rounded-lg text-xs transition-all ${
+              className={`w-full text-left px-2.5 py-2 rounded-md text-xs transition-all ${
                 preferences.organizeMode === 'category_only'
-                  ? 'bg-white/10 text-white border border-white/10'
-                  : 'text-neutral-400 hover:bg-white/5 hover:text-neutral-200'
+                  ? 'bg-[#1e1e24] text-white border border-white/10'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2 font-medium">
                 <Layers className="w-3.5 h-3.5 text-amber-400" />
                 <span>File Types & Formats</span>
               </div>
-              <p className="text-[10px] text-neutral-400 pl-5.5 mt-0.5 leading-snug">
-                Sorts by Documents, Images, Code, Audio, Video.
+              <p className="text-[10px] text-neutral-500 pl-5 mt-0.5 leading-snug">
+                Documents, Images, Developer, Media.
               </p>
             </button>
 
             <button
               onClick={() => onUpdatePreferences({ organizeMode: 'date_grouped' })}
-              className={`w-full text-left px-2.5 py-2 rounded-lg text-xs transition-all ${
+              className={`w-full text-left px-2.5 py-2 rounded-md text-xs transition-all ${
                 preferences.organizeMode === 'date_grouped'
-                  ? 'bg-white/10 text-white border border-white/10'
-                  : 'text-neutral-400 hover:bg-white/5 hover:text-neutral-200'
+                  ? 'bg-[#1e1e24] text-white border border-white/10'
+                  : 'text-neutral-400 hover:bg-white/[0.04] hover:text-neutral-200'
               }`}
             >
               <div className="flex items-center space-x-2 font-medium">
                 <Calendar className="w-3.5 h-3.5 text-teal-400" />
                 <span>Timeline (Year / Month)</span>
               </div>
-              <p className="text-[10px] text-neutral-400 pl-5.5 mt-0.5 leading-snug">
-                Sorts by modified date into Year/Month structure.
+              <p className="text-[10px] text-neutral-500 pl-5 mt-0.5 leading-snug">
+                Date-based chronological archives.
               </p>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Card / Clean Junk toggle */}
-      <div className="pt-4 border-t border-white/5 space-y-3">
-        <label className="flex items-center justify-between px-2.5 py-2 rounded-lg bg-white/5 text-xs text-neutral-300 cursor-pointer hover:bg-white/10 transition-colors">
+      {/* Bottom Matte Card / Clean Junk toggle */}
+      <div className="pt-4 border-t border-white/[0.06] space-y-2.5">
+        <label className="flex items-center justify-between px-2.5 py-2 rounded-md bg-[#131317] border border-white/[0.06] text-xs text-neutral-300 cursor-pointer hover:bg-[#18181e] transition-colors">
           <div className="flex items-center space-x-2">
             <Trash2 className="w-3.5 h-3.5 text-red-400" />
             <span>Quarantine Junk Files</span>
@@ -200,12 +201,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
             type="checkbox"
             checked={preferences.cleanJunkFiles}
             onChange={(e) => onUpdatePreferences({ cleanJunkFiles: e.target.checked })}
-            className="w-3.5 h-3.5 rounded text-blue-500 focus:ring-blue-400 focus:ring-offset-0 bg-neutral-800 border-neutral-700"
+            className="w-3.5 h-3.5 rounded text-blue-500 bg-neutral-900 border-neutral-700"
           />
         </label>
 
-        <div className="px-2.5 py-2 rounded-lg bg-gradient-to-br from-blue-900/30 to-purple-900/20 border border-blue-500/10 text-[11px] text-neutral-400 leading-relaxed">
-          <span className="font-semibold text-blue-300">Safety Guarantee:</span> Preview every file move before applying. Revert with 1-click Undo anytime.
+        <div className="px-3 py-2.5 rounded-md bg-[#121216] border border-white/[0.06] text-[11px] text-neutral-400 leading-relaxed">
+          <div className="flex items-center space-x-1.5 text-neutral-200 font-medium mb-0.5">
+            <FolderCheck className="w-3 h-3 text-blue-400" />
+            <span>Dry-Run Safety</span>
+          </div>
+          Files are only moved after your approval in the preview step.
         </div>
       </div>
     </aside>

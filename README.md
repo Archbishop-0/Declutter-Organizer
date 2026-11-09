@@ -1,6 +1,6 @@
-# 🗂️ Declutter (macOS-Style Smart Workspace Organizer)
+# 🗂️ Declutter (Matte Black Workspace & Folder Organizer)
 
-> **A minimal, modern desktop application designed with macOS aesthetics to instantly transform chaotic folders (Desktop, Downloads, Documents) into cleanly categorized project and topic-based workspaces.**
+> **A minimal, modern desktop application designed with a sleek matte black finish and native Windows caption controls to instantly transform chaotic folders (Desktop, Downloads, Documents) into cleanly categorized project and topic-based workspaces.**
 
 [![Electron](https://img.shields.io/badge/Electron-45.2-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/)
 [![React](https://img.shields.io/badge/React-19.3-61DAFB?logo=react&logoColor=black)](https://react.dev/)
@@ -12,9 +12,10 @@
 
 ## ✨ Features
 
-- 🍎 **Authentic macOS Window Interface**:
-  - Frameless frosted-glass window with functional red, amber, and green traffic lights.
-  - Translucent Finder-style sidebar with quick-access bookmarks for Desktop, Downloads, and Documents.
+- 🖤 **Matte Black Dark Aesthetic**:
+  - Deep carbon matte surfaces (`#09090b` / `#111114`) with anti-reflective micro-borders.
+  - Native Windows-style window controls placed on the top-right (Minimize `—`, Maximize/Restore `□`/`❐`, and Close `✕` with signature crimson hover).
+  - Clean sidebar with quick-access bookmarks for Desktop, Downloads, and Documents.
   - Dark Mode and Light Mode support with smooth transitions.
 
 - 🧠 **Intelligent Project & Topic Clustering**:
@@ -41,9 +42,9 @@
 
 ```text
  ┌────────────────────────────────────────────────────────────────────────┐
- │ ● ● ●   ✨ Declutter • macOS Workspace Organizer      [↩ Undo] [⚙] [☼] │
+ │ 📁 Declutter | Workspace Organizer      [↩ Undo] [⚙] [☼]  [ — ] [ □ ] [ ✕ ]│
  ├────────────────┬───────────────────────────────────────────────────────┤
- │ FAVORITES      │  [📁 Target: C:/Users/byte/Desktop]  [Reveal] [Rescan]│
+ │ LOCATIONS      │  [📁 Target: C:/Users/byte/Desktop]  [Reveal] [Rescan]│
  │  🖥️ Desktop    │                                                       │
  │  📥 Downloads  │  ┌───────────┬───────────┬───────────┬───────────┐    │
  │  📄 Documents  │  │ 42 Items  │  1.2 GB   │ 5 Folders │  2 Junk   │    │

@@ -12,7 +12,7 @@ function createWindow() {
     minHeight: 580,
     frame: false, // Custom macOS traffic lights window frame
     titleBarStyle: 'hidden',
-    backgroundColor: '#18181b',
+    backgroundColor: '#09090b',
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       nodeIntegration: false,
@@ -20,6 +20,14 @@ function createWindow() {
     },
     icon: path.join(__dirname, '../public/icon.png'),
     show: false,
+  });
+
+  mainWindow.on('maximize', () => {
+    mainWindow?.webContents.send('window-maximized-state', true);
+  });
+
+  mainWindow.on('unmaximize', () => {
+    mainWindow?.webContents.send('window-maximized-state', false);
   });
 
   const isDev = process.env.NODE_ENV === 'development';
@@ -53,6 +61,10 @@ app.on('window-all-closed', () => {
 });
 
 // Window controls
+ipcMain.handle('get-maximized-state', () => {
+  return mainWindow ? mainWindow.isMaximized() : false;
+});
+
 ipcMain.on('window-minimize', () => {
   if (mainWindow) mainWindow.minimize();
 });
