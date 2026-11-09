@@ -10,7 +10,8 @@ function createWindow() {
     height: 740,
     minWidth: 860,
     minHeight: 580,
-    frame: false, // Custom macOS traffic lights window frame
+    title: 'Declutter',
+    frame: false,
     titleBarStyle: 'hidden',
     backgroundColor: '#09090b',
     webPreferences: {

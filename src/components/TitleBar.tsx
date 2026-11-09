@@ -56,10 +56,6 @@ export const TitleBar: React.FC<TitleBarProps> = ({
           <span className="font-semibold text-neutral-200 tracking-wide font-sans">
             Declutter
           </span>
-          <span className="text-neutral-600">|</span>
-          <span className="text-[11px] text-neutral-400 font-medium tracking-normal hidden sm:inline">
-            Workspace Organizer
-          </span>
         </div>
       </div>
 

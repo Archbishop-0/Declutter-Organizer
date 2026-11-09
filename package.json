@@ -1,7 +1,8 @@
 {
-  "name": "declutter-organizer",
+  "name": "declutter",
+  "productName": "Declutter",
   "version": "1.0.0",
-  "description": "Minimal, elegant macOS-style workspace and folder organizer",
+  "description": "Minimal, elegant matte black workspace and folder organizer",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "concurrently -k -r \"cross-env NODE_ENV=development vite\" \"wait-on tcp:5173 && electron .\"",
@@ -9,12 +10,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "electron .",
-    "app": "npm run build && electron ."
+    "app": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --win portable nsis",
+    "pack": "electron-builder --dir"
   },
   "keywords": [
     "folder-organizer",
     "declutter",
-    "macos-ui",
     "desktop-cleaner",
     "electron",
     "react"
@@ -38,10 +40,50 @@
     "concurrently": "^10.0.7",
     "cross-env": "^10.1.0",
     "electron": "^45.2.3",
+    "electron-builder": "^26.7.1",
     "postcss": "^8.5.32",
     "tailwindcss": "^4.3.5",
     "typescript": "^7.0.2",
     "vite": "^8.3.7",
     "wait-on": "^8.0.5"
+  },
+  "build": {
+    "appId": "com.declutter.app",
+    "productName": "Declutter",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "executableName": "Declutter"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "Declutter-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Declutter-Portable.exe"
+    }
   }
 }

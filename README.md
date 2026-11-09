@@ -1,4 +1,4 @@
-# 🗂️ Declutter (Matte Black Workspace & Folder Organizer)
+# 🗂️ Declutter
 
 > **A minimal, modern desktop application designed with a sleek matte black finish and native Windows caption controls to instantly transform chaotic folders (Desktop, Downloads, Documents) into cleanly categorized project and topic-based workspaces.**
 
@@ -42,7 +42,7 @@
 
 ```text
  ┌────────────────────────────────────────────────────────────────────────┐
- │ 📁 Declutter | Workspace Organizer      [↩ Undo] [⚙] [☼]  [ — ] [ □ ] [ ✕ ]│
+ │ 📁 Declutter                            [↩ Undo] [⚙] [☼]  [ — ] [ □ ] [ ✕ ]│
  ├────────────────┬───────────────────────────────────────────────────────┤
  │ LOCATIONS      │  [📁 Target: C:/Users/byte/Desktop]  [Reveal] [Rescan]│
  │  🖥️ Desktop    │                                                       │
@@ -63,7 +63,21 @@
 
 ---
 
-## 🚀 Quick Start
+## 💾 Downloads & Executables
+
+Pre-compiled standalone Windows executables are located in the `release/` directory:
+
+- **Portable Executable (`Declutter-Portable.exe`)**: No installation needed. Double-click and run directly from anywhere (USB drive, Desktop, Downloads).
+- **Windows Setup Installer (`Declutter-Setup-1.0.0.exe`)**: Standard NSIS installer that creates desktop and start menu shortcuts.
+
+To compile executables yourself:
+```bash
+npm run dist
+```
+
+---
+
+## 🚀 Quick Start from Source
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
@@ -72,28 +86,28 @@
 ### 1. Installation
 Clone the repository and install dependencies:
 ```bash
-git clone https://github.com/your-username/declutter-organizer.git
-cd declutter-organizer
+git clone https://github.com/your-username/declutter.git
+cd declutter
 npm install
 ```
 
 ### 2. Run the Desktop App
-Launch the macOS-style desktop application:
+Launch the desktop application:
 ```bash
 npm run app
 ```
-*(This builds the assets and opens the Electron native window).*
+*(This builds the assets and opens the native window).*
 
 Or run in hot-reloading development mode:
 ```bash
 npm run dev
 ```
 
-### 3. Run in Web Browser
-To preview the interface in a standard browser:
+### 3. Build Executable (.exe)
 ```bash
-npm run web
+npm run dist
 ```
+Produces `Declutter-Portable.exe` and `Declutter-Setup-1.0.0.exe` in `release/`.
 
 ---
 
@@ -132,19 +146,18 @@ Organizer/
 
 ## 🛠️ GitHub Publishing Guide
 
-To post this project directly to your GitHub repository:
-
+### 1. Push Source Code to GitHub
 ```bash
-# Initialize git
-git init
-git add .
-git commit -m "feat: initial commit of Declutter macOS-style workspace organizer"
-
-# Add your GitHub repository remote
-git remote add origin https://github.com/<YOUR-GITHUB-USERNAME>/<YOUR-REPO-NAME>.git
+git remote add origin https://github.com/<YOUR-GITHUB-USERNAME>/declutter.git
 git branch -M main
 git push -u origin main
 ```
+
+### 2. Publish the Executable (.exe) as a GitHub Release
+1. On GitHub, navigate to your repository and click **Releases** → **Draft a new release**.
+2. Set Tag version to `v1.0.0` and Title to `Declutter v1.0.0`.
+3. Drag and drop `Declutter-Portable.exe` and `Declutter-Setup-1.0.0.exe` (from the `release/` directory) into the release binaries area.
+4. Click **Publish release**. Users worldwide can now download and run **Declutter** with a single click!
 
 ---
 

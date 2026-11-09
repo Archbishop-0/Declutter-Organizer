@@ -27,3 +27,6 @@ dist-ssr
 # Declutter internal history
 declutter-history.json
 declutter-rules.json
+
+# Build outputs
+release/
