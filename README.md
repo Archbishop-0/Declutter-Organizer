@@ -7,7 +7,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-7.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-v4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Download Portable](https://img.shields.io/badge/Download-Declutter--Portable.exe-0A84FF?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Archbishop-0/Declutter-Organizer-/releases/latest/download/Declutter-Portable.exe)
+[![Download Installer](https://img.shields.io/badge/Download-Installer_(.exe)-2ea44f?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Archbishop-0/Declutter-Organizer-/releases/latest/download/Declutter-Setup-1.0.0.exe)
+[![Download Portable](https://img.shields.io/badge/Download-Portable_(.exe)-0A84FF?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/Archbishop-0/Declutter-Organizer-/releases/latest/download/Declutter-Portable.exe)
 
 ---
 
