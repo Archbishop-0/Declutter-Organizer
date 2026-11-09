@@ -86,8 +86,8 @@ npm run dist
 ### 1. Installation
 Clone the repository and install dependencies:
 ```bash
-git clone https://github.com/your-username/declutter.git
-cd declutter
+git clone https://github.com/Archbishop-0/Declutter-Organizer-.git
+cd Declutter-Organizer-
 npm install
 ```
 
