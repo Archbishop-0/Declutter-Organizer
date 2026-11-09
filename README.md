@@ -143,9 +143,8 @@ Organizer/
 ```
 
 ---
-4. Click **Publish release**. Users worldwide can now download and run **Declutter** with a single click!
 
 ---
 
 ## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source and available under the [MIT License](LI
