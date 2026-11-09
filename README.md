@@ -143,20 +143,6 @@ Organizer/
 ```
 
 ---
-
-## 🛠️ GitHub Publishing Guide
-
-### 1. Push Source Code to GitHub
-```bash
-git remote add origin https://github.com/<YOUR-GITHUB-USERNAME>/declutter.git
-git branch -M main
-git push -u origin main
-```
-
-### 2. Publish the Executable (.exe) as a GitHub Release
-1. On GitHub, navigate to your repository and click **Releases** → **Draft a new release**.
-2. Set Tag version to `v1.0.0` and Title to `Declutter v1.0.0`.
-3. Drag and drop `Declutter-Portable.exe` and `Declutter-Setup-1.0.0.exe` (from the `release/` directory) into the release binaries area.
 4. Click **Publish release**. Users worldwide can now download and run **Declutter** with a single click!
 
 ---
