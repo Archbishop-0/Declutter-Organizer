@@ -158,7 +158,7 @@ flowchart TD
         S --> T["1-Click Undo Engine<br>(Instant State Restoration)"]
     end
 
-    classDef default fill:#111114,stroke:rgba(255,255,255,0.12),color:#e4e4e7;
+    classDef default fill:#111114,stroke:#333338,color:#e4e4e7;
     classDef accent fill:#161622,stroke:#3b82f6,color:#ffffff;
     classDef danger fill:#1f1416,stroke:#ef4444,color:#ffffff;
     classDef success fill:#121e16,stroke:#22c55e,color:#ffffff;
