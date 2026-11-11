@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🗂️ Declutter
+# Declutter
 
 **A minimal, modern workspace organizer with a matte black finish and native Windows caption controls.**  
 *Transform chaotic Desktop, Downloads, and Documents folders into structured, project-based workspaces in seconds.*
@@ -28,26 +28,26 @@
 
 <br /><br />
 
-[Overview](#-overview) •
-[Key Features](#-key-features) •
-[Interface](#-interface) •
-[Downloads](#-downloads) •
-[Quick Start](#-quick-start) •
-[Safety & Reliability](#-safety--reliability) •
-[Architecture](#-architecture) •
-[License](#-license)
+[Overview](#overview) •
+[Key Features](#key-features) •
+[Interface](#interface) •
+[Architecture Flowchart](#architecture-flowchart) •
+[Downloads](#downloads) •
+[Quick Start](#quick-start-from-source) •
+[Safety & Reliability](#safety--reliability) •
+[License](#license)
 
 </div>
 
 ---
 
-## 📖 Overview
+## Overview
 
 Are your **Desktop** and **Downloads** cluttered with hundreds of loose PDFs, screenshots, installers, and code snippets? 
 
 **Declutter** scans messy directories, analyzes file stems and metadata, and automatically generates an intuitive, organized folder hierarchy. Every action is previewed before execution, with zero risk of accidental data loss.
 
-| Before Declutter 🌪️ | After Declutter 🗂️ |
+| Before Declutter | After Declutter |
 |---|---|
 | • 100+ unorganized files on Desktop | • `Finance/Invoices & Receipts` |
 | • Broken partial downloads (`.crdownload`) | • `Studies/Research & Notes` |
@@ -57,63 +57,119 @@ Are your **Desktop** and **Downloads** cluttered with hundreds of loose PDFs, sc
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🖤 Matte Black Carbon Aesthetic
+### Matte Black Carbon Aesthetic
 - **Anti-Reflective Palette**: Velvety dark matte surfaces (`#09090b` / `#111114`) with subtle micro-borders (`rgba(255, 255, 255, 0.07)`).
 - **Native Windows 11/10 Caption Buttons**: Top-right Minimize (`—`), dynamic Maximize/Restore (`□`/`❐`), and Close (`✕`) with signature crimson hover feedback.
 - **Finder-Inspired Sidebar**: Seamless quick-access bookmarks for Desktop, Downloads, Documents, or custom external drives.
 
-### 🧠 Intelligent Categorization Engine
+### Intelligent Categorization Engine
 - **Topic Keyword & Extension Matching**: Curated rules for common workflows:
-  - 💼 `Finance/Invoices & Receipts` (`invoice`, `receipt`, `tax`, `statement`, `salary`)
-  - 🎓 `Studies/Research & Notes` (`thesis`, `assignment`, `lecture`, `paper`, `lab`)
-  - 💻 `Development/Projects` (`.ts`, `.py`, `.rs`, `.cpp`, `docker`, `api`, `sql`)
-  - 📸 `Media/Screenshots` (`screenshot`, `capture`, `snip`, `screengrab`)
-  - 🎨 `Creative/Design Assets` (`.fig`, `.psd`, `.ai`, `.sketch`, `mockup`)
-  - 📦 `Software & Installers` (`.exe`, `.msi`, `.dmg`, `.pkg`, `.iso`)
-  - 📚 `Reading/Books & Guides` (`.epub`, `.pdf`, `manual`, `handbook`)
+  - **Finance & Receipts**: `Finance/Invoices & Receipts` (`invoice`, `receipt`, `tax`, `statement`, `salary`)
+  - **Research & Studies**: `Studies/Research & Notes` (`thesis`, `assignment`, `lecture`, `paper`, `lab`)
+  - **Development**: `Development/Projects` (`.ts`, `.py`, `.rs`, `.cpp`, `docker`, `api`, `sql`)
+  - **Screenshots**: `Media/Screenshots` (`screenshot`, `capture`, `snip`, `screengrab`)
+  - **Design Assets**: `Creative/Design Assets` (`.fig`, `.psd`, `.ai`, `.sketch`, `mockup`)
+  - **Software & Packages**: `Software & Installers` (`.exe`, `.msi`, `.dmg`, `.pkg`, `.iso`)
+  - **Books & Reading**: `Reading/Books & Guides` (`.epub`, `.pdf`, `manual`, `handbook`)
 - **Smart Project Auto-Clustering**: Automatically detects multi-file naming stems (e.g. `ClientAlpha_Quote.pdf`, `ClientAlpha_Specs.docx` → `Projects/Project - Client Alpha`).
 - **Timeline Organization Mode**: Chronological sorting by Year and Month (`Timeline/2026/November`).
 - **Custom Topic Builder**: Define your own custom topics, keywords, extensions, and color tags with the built-in rule editor.
 
-### 🛡️ Safety-First Architecture
+### Safety-First Architecture
 - **Interactive Dry-Run Approval Modal**: Inspect every file's proposed destination before a single move occurs. Search, collapse groups, and deselect files to leave them in place.
 - **1-Click Rollback / Undo System**: Every organization run logs complete source and destination manifests. Revert any past cleanup with one click.
 - **Collision Protection**: Automatically renames duplicates with `(1)`, `(2)` to prevent accidental overwrites.
 - **System Safeguards**: Automatically skips system entries (`desktop.ini`, `thumbs.db`, `.git`, `node_modules`, `.DS_Store`).
 
-### 🧹 Temporary & Junk Quarantine
+### Temporary & Junk Quarantine
 - Detects incomplete downloads (`.crdownload`, `.part`), temporary files (`.tmp`), and leftover dumps, isolating them into a dedicated cleanup folder.
 
 ---
 
-## 🖥️ Interface
+## Interface
 
 ```text
  ┌─────────────────────────────────────────────────────────────────────────────────┐
- │ 📁 Declutter                                  [↩ Undo] [⚙] [☼]  [ — ] [ □ ] [ ✕ ]│
+ │ Declutter                                     [Undo] [Rules] [Theme] [—] [□] [✕]│
  ├────────────────┬────────────────────────────────────────────────────────────────┤
- │ LOCATIONS      │  📁 Target: C:/Users/byte/Desktop             [Reveal] [Rescan]│
- │  🖥️ Desktop    │                                                                │
- │  📥 Downloads  │  ┌────────────┬────────────┬────────────┬────────────┐         │
- │  📄 Documents  │  │  42 Items  │   1.2 GB   │ 5 Folders  │   2 Junk   │         │
- │  📁 Custom...  │  └────────────┴────────────┴────────────┴────────────┘         │
+ │ LOCATIONS      │  Target: C:/Users/byte/Desktop                 [Reveal] [Rescan]│
+ │  Desktop       │                                                                │
+ │  Downloads     │  ┌────────────┬────────────┬────────────┬────────────┐         │
+ │  Documents     │  │  42 Items  │   1.2 GB   │ 5 Folders  │   2 Junk   │         │
+ │  Custom...     │  └────────────┴────────────┴────────────┴────────────┘         │
  │                │                                                                │
  │ MODES          │  PROPOSED CATEGORIES:                                          │
- │  📂 Smart Topic│  • Finance/Invoices & Receipts (6 items)                       │
- │  ✨ Proj Cluster│ • Studies/Research & Notes (12 items)                         │
- │  📑 File Types │  • Development/Projects & Scripts (15 items)                   │
- │  📅 Timeline   │  • Media/Screenshots (7 items)                                 │
+ │  Smart Topics  │  • Finance/Invoices & Receipts (6 items)                       │
+ │  Proj Clusters │  • Studies/Research & Notes (12 items)                         │
+ │  File Types    │  • Development/Projects & Scripts (15 items)                   │
+ │  Timeline      │  • Media/Screenshots (7 items)                                 │
  │                │  • Cleanup/Temporary & Junk (2 items)                          │
  │ [x] Clean Junk │                                                                │
- │                │  [ ✨ Review Plan & Execute Moves (42 Files) → ]               │
+ │                │  [ Review Plan & Execute Moves (42 Files) → ]                  │
  └────────────────┴────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 💾 Downloads
+## Architecture Flowchart
+
+The following flowchart illustrates how Declutter discovers, analyzes, classifies, verifies, and executes file moves with built-in safety gates and rollback capability:
+
+```mermaid
+flowchart TD
+    subgraph S1["1. Input Source"]
+        A["Target Directory<br>Desktop / Downloads / Documents / Custom"]
+    end
+
+    subgraph S2["2. Discovery & Filtering"]
+        A --> B["Filesystem Scanner<br>(fs.readdir & fs.statSync)"]
+        B --> C{"System Guard"}
+        C -->|"Protected File"| D["Bypass / Retain<br>(.git, desktop.ini, .DS_Store)"]
+        C -->|"Candidate File"| E{"Junk Detector"}
+        E -->|"Matches Junk Ext"| F["Quarantine Queue<br>(.crdownload, .tmp, .part)"]
+        E -->|"Valid File"| G["Classification Engine"]
+    end
+
+    subgraph S3["3. Classification Pipeline"]
+        G --> H{"Rule Precedence"}
+        H -->|"1. Keyword & Extension Rules"| I["Topic Folders<br>(Finance, Studies, Dev, Media)"]
+        H -->|"2. Shared Filename Stems"| J["Project Auto-Clusters<br>(Project - Apollo, Project - Acme)"]
+        H -->|"3. Timestamp Metadata"| K["Timeline Mode<br>(Year / Month)"]
+        H -->|"4. Extension Fallback"| L["Format Categories<br>(Documents, Images, Code)"]
+    end
+
+    subgraph S4["4. Safety Gate & Review"]
+        I --> M["Compile Organization Plan"]
+        J --> M
+        K --> M
+        L --> M
+        F --> M
+        M --> N["Interactive Dry-Run Approval Modal"]
+        N -->|"User Review & Selection"| O{"User Decision"}
+        O -->|"Cancel"| P["Abort - No Changes Made"]
+    end
+
+    subgraph S5["5. Atomic Execution & Rollback"]
+        O -->|"Confirm Move"| Q["Collision Resolver<br>(Auto-rename duplicates: file (1).ext)"]
+        Q --> R["Atomic Move Operation<br>(fs.renameSync)"]
+        R --> S["Transaction Manifest<br>(.declutter-history.json)"]
+        S --> T["1-Click Undo Engine<br>(Instant State Restoration)"]
+    end
+
+    classDef default fill:#111114,stroke:rgba(255,255,255,0.12),color:#e4e4e7;
+    classDef accent fill:#161622,stroke:#3b82f6,color:#ffffff;
+    classDef danger fill:#1f1416,stroke:#ef4444,color:#ffffff;
+    classDef success fill:#121e16,stroke:#22c55e,color:#ffffff;
+    class N,M accent;
+    class F,D danger;
+    class R,S,T success;
+```
+
+---
+
+## Downloads
 
 Pre-compiled production binaries are available under [GitHub Releases](https://github.com/Archbishop-0/Declutter-Organizer/releases):
 
@@ -124,11 +180,11 @@ Pre-compiled production binaries are available under [GitHub Releases](https://g
 
 ---
 
-## 🚀 Quick Start from Source
+## Quick Start from Source
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18.0 or newer)
-- [npm](https://www.npmjs.com/) (v9.0 or newer)
+- Node.js (v18.0 or newer)
+- npm (v9.0 or newer)
 
 ### 1. Clone the Repository
 ```bash
@@ -154,7 +210,7 @@ Generates both `Declutter-Portable.exe` and `Declutter-Setup-1.0.0.exe` in the `
 
 ---
 
-## 🛡️ Safety & Reliability
+## Safety & Reliability
 
 | Protection Layer | Mechanism |
 |---|---|
@@ -166,40 +222,7 @@ Generates both `Declutter-Portable.exe` and `Declutter-Setup-1.0.0.exe` in the `
 
 ---
 
-## 📦 Architecture
-
-```
-Declutter-Organizer/
-├── electron/
-│   ├── main.cjs            # Electron main process (IPC handlers, file ops, undo manifest)
-│   └── preload.cjs         # Context isolation bridge exposing safe window.electronAPI
-├── src/
-│   ├── components/
-│   │   ├── TitleBar.tsx    # Windows-style caption buttons, title, quick actions
-│   │   ├── Sidebar.tsx     # Matte carbon navigation and organization modes
-│   │   ├── FolderPicker.tsx# Target folder selector and drag-and-drop dropzone
-│   │   ├── StatsOverview.tsx# File distribution metrics and category summary cards
-│   │   ├── PreviewPlanModal.tsx # Interactive dry-run approval modal
-│   │   ├── TopicRuleEditor.tsx  # In-app custom topic rules builder
-│   │   ├── UndoHistoryModal.tsx # 1-click rollback history modal
-│   │   └── SettingsModal.tsx    # Conflict resolution & safety preferences
-│   ├── services/
-│   │   ├── defaultRules.ts # Curated rule presets (Finance, Studies, Dev, Media, etc.)
-│   │   └── organizerEngine.ts # Project stem detection, clustering, classification heuristics
-│   ├── types/
-│   │   └── index.ts        # TypeScript data definitions
-│   ├── App.tsx             # Root application orchestrator
-│   ├── index.css           # Matte black styles, custom scrollbar, base resets
-│   └── main.tsx            # React 19 entry point
-├── test/
-│   └── engine.test.cjs     # Automated unit test suite
-├── package.json
-└── README.md
-```
-
----
-
-## 📄 License
+## License
 
 This project is open-source under the [MIT License](LICENSE).  
-Developed with pride by [Archbishop](https://github.com/Archbishop-0).
+Developed by [Archbishop](https://github.com/Archbishop-0).
